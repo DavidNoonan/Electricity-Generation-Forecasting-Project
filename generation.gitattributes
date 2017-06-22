@@ -3,3 +3,4 @@ $ cat .gitattributes
 *.Rproj linguist-language=R
 *.pdf linguist-language=R
 *.csv linguist-language=R
+*.html linguist-language=R
