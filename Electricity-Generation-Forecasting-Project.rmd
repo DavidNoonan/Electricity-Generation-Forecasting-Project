@@ -8,14 +8,21 @@ output:
 
 This is a time series analysis of total electricity generation in the United States.  The data consists of monthly generation totals from January 1985 to October 1996 in millions of gigawatt-hours. We will explore the dataset, fit a model, and ultimately make a 12 month forecast of electricity generation. Below is a plot of the dataset.
 
-```{r, echo=FALSE, fig.height=3, fig.width=8, message=FALSE, warning=FALSE}
-library(dplyr)
-library(astsa)
-generation <- read.table(file = "generation.csv", header = TRUE) %>% #read data
-  ts(, start = c(1985,1), end = c(1996,10), frequency = 12) # convert dataset to a timeseries object
+```{r, fig.height=3, fig.width=8, message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr) #data manipulation
+library(astsa) #timeseries functions
+library(RCurl) #for data import
+
+generation.data <- read.csv(text = getURL("https://raw.githubusercontent.com/DavidNoonan/Electricity-Generation-Forecasting-Project/master/generation.csv"),header = TRUE)
+
+generation <- ts(generation.data, start = c(1985,1), end = c(1996,10), frequency = 12) # convert dataset to a timeseries object
+```
+
+```{r,fig.height=3, fig.width=8, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
 par(mar = c(2,4,2,2))
 plot.ts(generation, main = "U.S. Total Electricity Generation 1985-1996", ylab = "M Gigawatt-Hours")
 ```
+
 
 Notice that the series is not stationary.  There is a consistent upward trend. Beyond the lack of stationarity, there is a seasonal component.  Each year, we see a pattern of three major spikes. We can model this series with SARIMA, but first we need to transform the dataset to achieve stationarity. We can remove the trend by differencing. Below is a plot of the differenced series:
 
