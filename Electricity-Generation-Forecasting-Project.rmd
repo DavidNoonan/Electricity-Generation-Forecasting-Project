@@ -1,5 +1,5 @@
 ---
-title: "Forecasting Total U.S. Electricity Generation 1985-1996"
+title: "Forecasting U.S. Electricity Generation 1985-1996"
 author: "David Noonan"
 output:
   pdf_document: default
@@ -18,7 +18,7 @@ generation.data <- read.csv(text = getURL("https://raw.githubusercontent.com/Dav
 generation <- ts(generation.data, start = c(1985,1), end = c(1996,10), frequency = 12) # convert dataset to a timeseries object
 ```
 
-```{r,fig.height=3, fig.width=8, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, fig.height=3, fig.width=8, message=FALSE, warning=FALSE}
 par(mar = c(2,4,2,2))
 plot.ts(generation, main = "U.S. Total Electricity Generation 1985-1996", ylab = "M Gigawatt-Hours")
 ```
@@ -113,7 +113,7 @@ lines(forc$pred + forc$se*qnorm(.99), col = "red") #upper limit prediction
 lines(forc$pred - forc$se*qnorm(.99), col = "red") #lower limit prediction
 ```
 
-Overall, the forecast looks believable. The pattern of three spikes per year continues into the year we are forecasting, as does the overall trend. According to the model, U.S. Energy production will continue in an upward trend, with a seasonal pattern.
+Overall, the forecast looks believable. The pattern of three spikes per year continues into the year we are forecasting, as does the overall upward trend. According to the model, U.S. Energy production will continue in its upward trend, with a similar seasonal pattern to previous years.
 
 \newpage
 
@@ -194,4 +194,4 @@ lines(forc$pred + forc$se*qnorm(.99), col = "red") #upper limit prediction
 lines(forc$pred - forc$se*qnorm(.99), col = "red") #lower limit prediction
 ```
 
-Thanks Prof Kerr!  Go Patriots!
+Thanks to Prof. Kerr from California State University East Bay!
