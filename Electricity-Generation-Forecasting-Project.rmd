@@ -1,12 +1,12 @@
 ---
-title: "Forecasting U.S. Electricity Generation 1985-1996"
+title: "Forecasting Total U.S. Electricity Generation"
 author: "David Noonan"
 output:
   pdf_document: default
   html_notebook: default
 ---
 
-This is a time series analysis of total electricity generation in the United States.  The data consists of monthly generation totals from January 1985 to October 1996 in millions of gigawatt-hours. We will explore the dataset, fit a model, and ultimately make a 12 month forecast of electricity generation. Below is a plot of the dataset.
+This is an exercise in time series analysis, forecasting the total electricity generation in the United States. The data consists of monthly generation totals from January 1985 to October 1996 in millions of gigawatt-hours. We will explore the dataset, fit a model, and ultimately make a 12 month forecast of electricity generation. Below is a plot of the dataset.
 
 ```{r, fig.height=3, fig.width=8, message=FALSE, warning=FALSE, include=FALSE}
 library(dplyr) #data manipulation
